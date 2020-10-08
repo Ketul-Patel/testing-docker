@@ -26,8 +26,8 @@ deploy:
   region: us-west-2
   app: testing-docker
   env: TestingDocker-env
-  bucket_name: elasticbeanstalk-us-west-2-254775564722
-  bucket_path: testing-docker
+  bucket_name: "elasticbeanstalk-us-west-2-254775564722"
+  bucket_path: "testing-docker"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
