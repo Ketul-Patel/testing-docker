@@ -1,0 +1,21 @@
+language: generic
+sudo: required
+services:
+  docker
+
+before_install:
+  -docker build -t ketuljaypatel/testing-docker -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true ketuljaypatel/react-test npm test
+
+after_success:
+  - docker build -t ketuljaypatel/testing-docker-client ./client
+  - docker build -t ketuljaypatel/testing-docker-nginx ./nginx
+  - docker build -t ketuljaypatel/testing-docker-server ./server
+  - docker build -t ketuljaypatel/testing-docker-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push ketuljaypatel/testing-docker-client
+  - docker push ketuljaypatel/testing-docker-nginx
+  - docker push ketuljaypatel/testing-docker-server
+  - docker push ketuljaypatel/testing-docker-worker
