@@ -19,3 +19,16 @@ after_success:
   - docker push ketuljaypatel/testing-docker-nginx
   - docker push ketuljaypatel/testing-docker-server
   - docker push ketuljaypatel/testing-docker-worker
+
+deploy: 
+  edge: true
+  provider: elasticbeanstalk
+  region: us-west-2
+  app: testing-docker
+  env: TestingDocker-env
+  bucket_name: elasticbeanstalk-us-west-2-254775564722
+  bucket_path: testing-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
