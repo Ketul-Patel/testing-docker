@@ -18,7 +18,6 @@
         {
             "name": "worker",
             "image": "ketuljaypatel/testing-docker-worker",
-            "hostname": "worker",
             "essential": false,
             "memory": 128
         },
