@@ -23,9 +23,9 @@ after_success:
 deploy: 
   edge: true
   provider: elasticbeanstalk
-  region: us-west-2
-  app: testing-docker
-  env: TestingDocker-env
+  region: "us-west-2"
+  app: "testing-docker"
+  env: "TestingDocker-env"
   bucket_name: "elasticbeanstalk-us-west-2-254775564722"
   bucket_path: "testing-docker"
   on:
